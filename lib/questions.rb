@@ -192,6 +192,7 @@ end
 # get the domain name *without* the .com part, from an email address
 # so alex@makersacademy.com becomes makersacademy
 def get_domain_name_from_email_address(email)
+  email.split("@")[1].split(".com")[0]
 end
 
 # capitalize the first letter in each word of a string, 
@@ -200,6 +201,7 @@ end
 # 'the lion the witch and the wardrobe' becomes
 # 'The Lion the Witch and the Wardrobe'
 def titleize_a_string(string)
+  string.classify
 end
 
 # return true if a string contains any special characters
@@ -217,6 +219,7 @@ end
 # should return true for a 3 dot range like 1...20, false for a 
 # normal 2 dot range
 def is_a_3_dot_range?(range)
+  range.exclude_end?
 end
 
 # get the square root of a number
@@ -226,6 +229,9 @@ end
 
 # count the number of words in a file
 def word_count_a_file(file_path)
+  open_file = File.open(file_path)
+  contents = open_file.read
+  contents.split(" ").length
 end
 
 # --- tougher ones ---
@@ -234,6 +240,7 @@ end
 # called call_method_from_string('foobar')
 # the method foobar should be invoked
 def call_method_from_string(str_method)
+  str_method.call
 end
 
 # return true if the date is a uk bank holiday for 2014

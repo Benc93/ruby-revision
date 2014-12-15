@@ -156,10 +156,10 @@ describe 'the Friday test :)' do
     expect(n).to eq '31/10/2013'
   end
 
-  # it 'get_domain_name_from_email_address' do
-  #   n = get_domain_name_from_email_address 'alex@makersacademy.com'
-  #   expect(n).to eq 'makersacademy'
-  # end
+  it 'get_domain_name_from_email_address' do
+    n = get_domain_name_from_email_address 'alex@makersacademy.com'
+    expect(n).to eq 'makersacademy'
+  end
 
   # it 'titleize_a_string' do
   #   n = titleize_a_string 'the lion the witch and the wardrobe'
@@ -194,14 +194,14 @@ describe 'the Friday test :)' do
     expect(b).to eq 1.7320508075688772
   end
 
-  # it 'word_count_a_file' do
-  #   n = word_count_a_file 'data/lorem.txt'
-  #   expect(n).to eq 70
-  # end
+  it 'word_count_a_file' do
+    n = word_count_a_file 'data/lorem.txt'
+    expect(n).to eq 70
+  end
 
-  # it 'call_method_from_string' do
-  #   expect { call_method_from_string('foobar') }.to raise_error(NameError)
-  # end
+  it 'call_method_from_string' do
+    expect { call_method_from_string('foobar') }.to raise_error(NameError)
+  end
 
   # it 'is_a_2014_bank_holiday?' do
   #   a = is_a_2014_bank_holiday?(Time.new(2014, 8, 25))
