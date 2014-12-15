@@ -53,7 +53,14 @@ end
 # 'banana' becomes 'ban'. If the string is an odd number of letters
 # round up - so 'apple' becomes 'app'
 def get_first_half_of_string(string)
-  string[(string.length.to_f)/2]
+  x = (string.length/2)-1
+  y = (string.length.to_f)/2
+
+  if string.length.even?
+    string[0..x]
+  else 
+    string[0..y]
+  end
 end
 
 # turn a positive integer into a negative integer. A negative integer
@@ -125,13 +132,14 @@ end
 # [1, 3, 5, 4, 1, 2, 6, 2, 1, 3, 7]
 # becomes [1, 3, 5, 4, 1, 2]
 def get_elements_until_greater_than_five(array)
+  array.take_while {|x| x<=5}
 end
 
 # turn an array (with an even number of elements) into a hash, by
 # pairing up elements. e.g. ['a', 'b', 'c', 'd'] becomes
 # {'a' => 'b', 'c' => 'd'}
 def convert_array_to_a_hash(array)
-  hash.each_pair { |key, value| hash[key] = value.to_a }
+  Hash[*array.flatten]
 end
 
 # get all the letters used in an array of words and return
@@ -139,6 +147,8 @@ end
 # . e.g. the array ['cat', 'dog', 'fish'] becomes
 # ['a', 'c', 'd', 'f', 'g', 'h', 'i', 'o', 's', 't']
 def get_all_letters_in_array_of_words(array)
+  x = array.reduce{|sum, x| sum + x}
+  x.chars.sort
 end
 
 # swap the keys and values in a hash. e.g.
@@ -152,11 +162,13 @@ end
 # add all the keys and all the values together, e.g.
 # {1 => 1, 2 => 2} becomes 6
 def add_together_keys_and_values(hash)
+  hash.flatten.reduce{|sum, x| sum + x}
 end
 
 # take out all the capital letters from a string
 # so 'Hello JohnDoe' becomes 'ello ohnoe'
 def remove_capital_letters_from_string(string)
+  string.gsub(/[[:upper:]]/, "")
 end
 
 # round up a float up and convert it to an Integer,
