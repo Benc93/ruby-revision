@@ -53,6 +53,7 @@ end
 # 'banana' becomes 'ban'. If the string is an odd number of letters
 # round up - so 'apple' becomes 'app'
 def get_first_half_of_string(string)
+  string[(string.length.to_f)/2]
 end
 
 # turn a positive integer into a negative integer. A negative integer
@@ -66,21 +67,34 @@ end
 # even numbers come first
 # so [1, 2, 3, 4, 5, 6] becomes [[2, 4, 6], [1, 3, 5]]
 def separate_array_into_even_and_odd_numbers(array)
+  x = array.select{|x| x.even?}
+  y = array.select{|x| x.odd?}
+  return [x, y]
 end
+
+
 
 # count the numbers of elements in an element which are palindromes
 # a palindrome is a word that's the same backwards as forward
 # e.g. 'bob'. So in the array ['bob', 'radar', 'eat'], there
 # are 2 palindromes (bob and radar), so the method should return 2
 def number_of_elements_that_are_palindromes(array)
+  array.select!{|x| palindrome?(x)}
+  array.length
+end
+
+def palindrome?(string)
+  string.reverse == string
 end
 
 # return the shortest word in an array
 def shortest_word_in_array(array)
+  array.min_by {|x| x.length}
 end
 
 # return the shortest word in an array
 def longest_word_in_array(array)
+  array.max_by {|x| x.length}
 end
 
 # add up all the numbers in an array, so [1, 3, 5, 6]
@@ -103,6 +117,7 @@ end
 # get the average from an array, rounded to the nearest integer
 # so [10, 15, 25] should return 33
 def average_of_array(array)
+  ((array.inject(:+).to_f)/(array.length)).round
 end
 
 # get all the elements in an array, up until the first element
@@ -116,6 +131,7 @@ end
 # pairing up elements. e.g. ['a', 'b', 'c', 'd'] becomes
 # {'a' => 'b', 'c' => 'd'}
 def convert_array_to_a_hash(array)
+  hash.each_pair { |key, value| hash[key] = value.to_a }
 end
 
 # get all the letters used in an array of words and return
